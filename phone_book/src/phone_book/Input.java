@@ -54,7 +54,14 @@ public class Input {
 					}
 				}else {
 					line.trim();
-					String[] Content = line.split("	");//tab	
+					//String[] Content = line.split("	");//tab	
+					String[] Content = Operation.splitByFirstSpace(line);
+					
+					if (line.charAt(0) == '	') {
+						String ap = line.substring(2, line.length());
+						address.append(ap);
+					}
+					else
 					if(!Content[0].trim().equals("")&&!Content[0].trim().equals("address")) {
 						flag = 1;
 						Operation.fitInfoOfPeople(Content[0].trim(), Content[1].trim(), people);							

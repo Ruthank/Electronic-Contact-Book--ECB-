@@ -36,8 +36,11 @@ public class Output {
 			FileWriter out = new FileWriter(file);
 			for(int i = 0; i < books.size(); i++) {
 				People people = books.get(i);
-				out.write("name	"+people.getName()+"\n");
-				out.write("birthday	"+people.getBirthday()+"\n");
+				
+				if (people.getName()!=null)
+					out.write("name	"+people.getName()+"\n");
+				if (people.getBirthday() != null)
+					out.write("birthday	"+people.getBirthday()+"\n");
 				if(people.getPhone()!=null)
 					out.write("phone	"+people.getPhone()+"\n");
 				if(people.getEmail()!=null)
@@ -58,8 +61,8 @@ public class Output {
 			File file = new File(queryPath);
 			if(!file.exists())file.createNewFile();
 			FileWriter out = new FileWriter(file,true);
-			if(flag == true)
-				out.write("------------------"+"\n");
+//			if(flag == true)
+//				out.write("------------------"+"\n");
 			
 			
 			for(int i=0;i<content.size();i++) {
@@ -68,8 +71,10 @@ public class Output {
 					out.write("\n");
 				People people = content.get(i);
 				
-				out.write("name	"+people.getName()+"\n");
-				out.write("birthday	"+people.getBirthday()+"\n");
+				if (people.getName()!=null)
+					out.write("name	"+people.getName()+"\n");
+				if (people.getBirthday() != null)
+					out.write("birthday	"+people.getBirthday()+"\n");
 				if(people.getPhone()!=null)
 					out.write("phone	"+people.getPhone()+"\n");
 				if(people.getEmail()!=null)

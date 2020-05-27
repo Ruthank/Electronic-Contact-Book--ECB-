@@ -42,13 +42,24 @@ public abstract class Operation {
 				break;
 			}
 		}
+		if (list[0] == null) list[0] = content;
 		return list;
 	}
 	
 	public static void fitInfoOfPeople(String infoName, String infoText, People people) {
 		switch(infoName) {
 		case "name": people.setName(infoText); break;
-		case "birthday": people.setBirthday(infoText); break;
+		case "birthday": 
+			String list[] = infoText.split("-");
+			String tmp = "";
+			for (String it : list) {
+				if (it.length() < 2) tmp = tmp + "0" + it;
+				else tmp = tmp + it;
+				tmp = tmp + "-";
+			}
+			tmp = tmp.substring(0, tmp.length()-1);
+			people.setBirthday(tmp); 
+			break;
 		case "phone": people.setPhone(infoText); break;
 		case "address": people.setAddress(infoText); break;
 		case "email": people.setEmail(infoText); break;

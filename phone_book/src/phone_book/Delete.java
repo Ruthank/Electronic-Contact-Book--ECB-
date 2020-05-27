@@ -6,13 +6,16 @@ import java.util.Iterator;
 public class Delete extends Operation{
 	static void delete(People content,ArrayList<People>book) {
 		
-		if (content.getBirthday() == null) {
-			book.removeIf(x -> x.getName().equals(content.getName()));
+		//System.out.println(content);
+		if (content.getBirthday() != null && content.getName() != null) {
+			book.removeIf(x -> (content.getName().equals(x.getName()))
+					&& content.getBirthday().equals(x.getBirthday()));
 			//System.out.println(context);
-		} else {
-			book.removeIf(x -> (x.getName().equals(content.getName())
-					&& x.getBirthday().equals(content.getBirthday())));
+		} else if (content.getName() != null){
+			book.removeIf(x -> (content.getName().equals(x.getName())));
 			//System.out.println(context);
+		} else if (content.getBirthday() != null) {
+			book.removeIf(x -> (content.getBirthday().equals(x.getBirthday())));
 		}
 //		
 //		Iterator<People> iterator = book.iterator();	
